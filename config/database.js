@@ -3,10 +3,14 @@ mongoClient.connect("mongodb://localhost/backend")
             .then(conn => global.conn = conn.db("backend"))
             .catch(err => console.log(err))
 
-function findAll(callback){  
+function findAllCustomer(callback){  
     global.conn.collection("customers").find({}).toArray(callback);
 }
 
+function insertCustomer(customer, callback){
+    global.conn.collection("customers").insert(customer, callback);
+}
+
 module.exports = { 
-    findAll
+    findAllCustomer, insertCustomer
 }

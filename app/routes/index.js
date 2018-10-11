@@ -7,7 +7,8 @@ module.exports  = function(app) {
         .get(api.getUser);
 
     app.route('/v1/customer')
-        .get(api.getAllCustomers);
+        .get(api.getAllCustomers)
+        .post(api.createCustomer);
     /*
     app.route('/v1/user/:userId')
         .delete(api.remove)

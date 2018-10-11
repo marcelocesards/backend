@@ -5,11 +5,19 @@ api.getUser = function(req, res) {
 };
 
 api.getAllCustomers = function(req, res) {
-    global.db.findAll((e, docs) => {
+    global.db.findAllCustomer((e, docs) => {
         if (e) {return console.log(e);}
         res.json(docs);
     });
 };
+
+api.createCustomer = function(req, res){
+    var customer = req.body;
+    global.db.insertCustomer(customer, (e, docs) => {
+        if (e) {return console.log(e);}
+        res.json(docs);
+    });
+}
 
 api.postUser = function(req, res){
     var usuario = req.body;
