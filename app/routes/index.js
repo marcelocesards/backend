@@ -1,11 +1,13 @@
 var api = require('../api');
-//    path = require('path');
 
 module.exports  = function(app) {
     
     app.route('/v1/user')
         .post(api.postUser)
         .get(api.getUser);
+
+    app.route('/v1/customer')
+        .get(api.getAllCustomers);
     /*
     app.route('/v1/user/:userId')
         .delete(api.remove)

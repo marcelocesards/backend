@@ -1,9 +1,14 @@
-//var db = require('../../config/database');
-
 var api = {}
 
 api.getUser = function(req, res) {
     res.json({"_name":"Marcelo"}); 
+};
+
+api.getAllCustomers = function(req, res) {
+    global.db.findAll((e, docs) => {
+        if (e) {return console.log(e);}
+        res.json(docs);
+    });
 };
 
 api.postUser = function(req, res){

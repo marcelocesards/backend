@@ -1,0 +1,8 @@
+use backend
+
+{
+	"nome": "Marcelo",
+	"telefone": "11544443333",
+	"email": "marcelo.cesards@gmail.com",
+	"password": "123456"
+}

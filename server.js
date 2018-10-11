@@ -1,3 +1,4 @@
+global.db = require('./config/database');
 var http = require('http')
     ,app = require('./config/express');
 
