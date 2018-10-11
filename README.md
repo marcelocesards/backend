@@ -130,3 +130,57 @@ DELETE: localhost:3000/v1/customer/abc
 
 ##### Error
 >>Código 500: Caso ocorra algum erro durante a execução do procedimento, será retornado um erro.
+
+## Código
+
+### Raiz
+Na raiz do sistema, voce verá o arquivo server.js responsável por iniciar o servidor da aplicação, além de vários outros arquivos e pastas descritos abaixo:
+
+| Nome |Descrição |
+| ------ | ------ |
+| app | Contém o código fonte da aplicação, dividido em dois módulos: api e routes. Esse código é responsável por implementar as regras de negócio por tras da API, fazer o tratamento de dados e tratamento de erros. |
+| data | Arquivos do banco de dados. |
+| infra | Possuindo dois módulos, esta sessão tem por finalidade definir as configurações do servidor Express, configurar e disponibilizar uma interface de métodos do banco de dados. |
+| setup | Algumas configurações interessantes, como os comandos para selecionar o banco de dados da aplicação e criar um índice, o shellScript mongo.sh, que visa iniciar o serviço do banco de dados e a collection do postman, com todas as requests necessárias para invocar as interfaces da API. |
+
+### Módulos
+
+#### app.api
+Este módulo é responsável por definir os métodos utilizados para invocar as interfaces do banco de dados, gerenciar erros e transformar dados para retornar ao usuário.
+
+##### Métodos
+
+| Nome |Descrição |
+| ------ | ------ |
+| api.getAllCustomers | Retorna todos os clientes existentes na base de dados. Não possui nenhum parametro e retorna um erro caso não seja encontrado nenhum cliente. |
+| api.getCustomer | Retorna todos os clientes existentes na base de dados que atendam aos parametros informados. Os parametros aceitos por este método devem ser informados como request query parameters: "id", "email" e "name". |
+| api.createCustomer | Cria um cliente na base de dados com base em um json enviado no corpo da requisição. |
+| api.updateCustomer | Atualiza um cliente na base de dados com base em um json enviado no corpo da requisição e no id enviado por parametro. Este método não suporta query parameters, apenas "request params". |
+| api.deleteCustomer | Remove um cliente na base de dados com base no id enviado por parametro. Este método não suporta query parameters, apenas "request params". |
+
+#### app.routes
+Este módulo é responsável por definir as rotas da aplicação que expõe os métodos HTTPS.
+
+##### app.rotas
+
+| Nome |Descrição |
+| ------ | ------ |
+| app.route('/v1/customer') | Define rotas para a criação de clientes e leitura da lista de clientes cadastrados. Ambos são métodos que não dependem de nenhum parametro. |
+| app.route('/v1/customer/:param') | Define rotas que dependem de parametros para serem executadas: getCustomer, updateCustomer e deleteCustomer. |
+| api.createCustomer | Cria um cliente na base de dados com base em um json enviado no corpo da requisição. |
+| app.use(function(err, req, res, next) | Esta rota é utilizada como um middleware de tratamento de erros. |
+
+#### infra.database
+Este módulo instancia a base de dados e define os métodos da interface de banco de dados a serem consumidos pelo módulo app.api.
+
+##### Métodos
+
+| Nome |Descrição |
+| ------ | ------ |
+| findAllCustomer | Retorna todos os clientes cadastrados no sistema. |
+| getCustomer | Retorna todos os clientes existentes na base de dados que atendam aos parametros informados. Os parametros aceitos por este método são: "id", "email" e "name". |
+| insertCustomer | Cria um cliente na base de dados com base em um json enviado como parametro. |
+| updateCustomer | Atualiza um cliente na base de dados com base em um json enviado por parametro.. |
+| deleteCustomer | Remove um cliente na base de dados com base no id enviado por parametro. |
+
+#### infra.express
