@@ -1,6 +1,6 @@
-global.db = require('./config/database');
+global.db = require('./infra/database');
 var http = require('http')
-    ,app = require('./config/express');
+    ,app = require('./infra/express');
 
 http.createServer(app).listen(3000, function() {
     console.log('Server listening port: ' + this.address().port);

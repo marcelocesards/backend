@@ -1,119 +1,49 @@
 var api = {}
 
-api.getAllCustomers = function(req, res) {
+api.getAllCustomers = function(req, res, next) {
     global.db.findAllCustomer((e, docs) => {
-        if (e) {return console.log(e);}
+        if (e) {return next(e);}
+        if (!docs.length) {return next({error: "None customer found"});}
         res.json(docs);
     });
 };
 
-api.getCustomer = function(req, res){
+api.getCustomer = function(req, res, next){
     var id = req.query.id;
     var email = req.query.email;
     var name = req.query.name?req.query.name:"";
-    global.db.getCustomerByParameter(id, email, name, (e, docs) => {
-        if (e) {return console.log(e);}
+    global.db.getCustomer(id, email, name, (e, docs) => {
+        if (e) {return next(e);}
         res.json(docs);
     });
 }
 
-api.createCustomer = function(req, res){
+api.createCustomer = function(req, res, next){
     var customer = req.body;
-    global.db.insertCustomer(customer, (e, docs) => {
-        if (e) {return console.log(e);}
-        res.json(docs);
-    });
+    global.db.insertCustomer(customer, (docs) => res.json(customer),
+        (e) => {
+            if (e) {return next(e);}
+            res.json(docs);
+        }
+    );
 }
 
-api.updateCustomer = function(req, res){
+api.updateCustomer = function(req, res, next){
     var customer = req.body;
     var id = req.params.param;
-    global.db.updateCustomer(id, customer, (e, docs) => {
-        if (e) {return console.log(e);}
-        res.json(docs);
+    global.db.updateCustomer(id, customer, (docs) => res.json(customer)
+        ,(e) => {
+            if (e) {return next(e);}
+            res.json(docs);
     });
 }
 
-api.deleteCustomer = function(req, res){
+api.deleteCustomer = function(req, res, next){
     var id = req.params.param;
     global.db.deleteCustomer(id, (e, docs) => {
-        if (e) {return console.log(e);}
-        res.json(docs);
+        if (e) {return next(e);}
+        res.json({"removed_id": id, "result": docs});
     });
 }
-/*
-api.adiciona = function(req, res) {
-    var foto = req.body;
-    delete foto._id;
-    db.insert(foto, function(err, newDoc) {
-        if(err) return console.log(err);
-        console.log('Adicionado com sucesso: ' + newDoc._id);
-        res.json(newDoc._id);
-    });  
-};
-
-api.busca = function(req, res) {
-   db.findOne({_id: req.params.fotoId }, function(err, doc) {
-        if (err) return console.log(err);
-        res.json(doc);
-    });
-};
-
-api.atualiza = function(req, res) {
-    console.log('Parâmetro recebido:' + req.params.fotoId);
-    db.update({_id : req.params.fotoId }, req.body, function(err, numReplaced) {
-        if (err) return console.log(err);
-        if(numReplaced) res.status(200).end();
-        res.status(500).end();
-        console.log('Atualizado com sucesso: ' + req.body._id);
-        res.status(200).end();
-    });  
-};
-
-api.lista = function(req, res) {
-    db.find({}).sort({titulo: 1}).exec(function(err, doc) {
-        if (err) return console.log(err);
-        res.json(doc);
-    });
-};
-
-api.listaPorGrupo = function(req, res) {
-    var grupoId = parseInt(req.params.grupoId);
-    db.find({grupo: grupoId}, function(err, doc) {
-        if (err) return console.log(err);
-        res.json(doc);
-    });
-
-};
-
-api.remove = function(req, res) {
-
-    db.remove({ _id: req.params.fotoId }, {}, function (err, numRemoved) {
-        if (err) return console.log(err);
-        console.log('removido com sucesso');
-        if(numRemoved) res.status(200).end();
-        res.status(500).end();
-    });
-};
-
-api.listaGrupos = function(req, res) {
-
-    res.json([
-        {
-            _id: 1, 
-            nome: 'esporte'
-        }, 
-        { 
-            _id: 2, 
-            nome: 'lugares', 
-        }, 
-        { 
-            _id: 3, 
-            nome: 'animais'
-        }
-    ]);
-        
-};
-*/
 
 module.exports = api;
