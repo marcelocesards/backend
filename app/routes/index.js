@@ -5,10 +5,15 @@ module.exports  = function(app) {
     app.route('/v1/user')
         .post(api.postUser)
         .get(api.getUser);
-
+        
     app.route('/v1/customer')
         .get(api.getAllCustomers)
         .post(api.createCustomer);
+    
+    app.route('/v1/customer/:param')
+        .get(api.getCustomer)
+        .put(api.updateCustomer);
+
     /*
     app.route('/v1/user/:userId')
         .delete(api.remove)

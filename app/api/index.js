@@ -11,9 +11,28 @@ api.getAllCustomers = function(req, res) {
     });
 };
 
+api.getCustomer = function(req, res){
+    var id = req.query.id;
+    var email = req.query.email;
+    var name = req.query.name?req.query.name:"";
+    global.db.getCustomerByParameter(id, email, name, (e, docs) => {
+        if (e) {return console.log(e);}
+        res.json(docs);
+    });
+}
+
 api.createCustomer = function(req, res){
     var customer = req.body;
     global.db.insertCustomer(customer, (e, docs) => {
+        if (e) {return console.log(e);}
+        res.json(docs);
+    });
+}
+
+api.updateCustomer = function(req, res){
+    var customer = req.body;
+    var id = req.params.param;
+    global.db.updateCustomer(id, customer, (e, docs) => {
         if (e) {return console.log(e);}
         res.json(docs);
     });
