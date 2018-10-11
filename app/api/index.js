@@ -14,6 +14,7 @@ api.getCustomer = function(req, res, next){
     var name = req.query.name?req.query.name:"";
     global.db.getCustomer(id, email, name, (e, docs) => {
         if (e) {return next(e);}
+        if (!docs.length) {return next({error: "None customer found"});}
         res.json(docs);
     });
 }
