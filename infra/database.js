@@ -31,7 +31,7 @@ function insertCustomer(customer, callback, callbackError){
 
 function updateCustomer(id, customer, callback, errorCallback){    
     global.conn.collection("customers")
-        .update({_id: ObjectId(id)}, customer)
+        .updateOne({_id: ObjectId(id)}, {$set:customer})
         .then( callback)
         .catch(errorCallback);
 }
