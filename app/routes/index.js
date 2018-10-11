@@ -1,10 +1,6 @@
 var api = require('../api');
 
 module.exports  = function(app) {
-    app.all('/', function(req, res) {
-        res.send('Hello Word');
-    });
-    
     app.route('/v1/customer')
         .get(api.getAllCustomers)
         .post(api.createCustomer);
