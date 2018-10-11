@@ -1,0 +1,36 @@
+2018-10-11T14:11:14.241-0300 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten] MongoDB starting : pid=7072 port=27017 dbpath=D:/Marcelo/WorkSpace/backend/backend/data 64-bit host=DESKTOP-TJ2QVCP
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten] targetMinOS: Windows 7/Windows Server 2008 R2
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten] db version v4.0.3
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten] git version: 7ea530946fa7880364d88c8d8b6026bbc9ffa48c
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten] allocator: tcmalloc
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten] modules: none
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten] build environment:
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten]     distmod: 2008plus-ssl
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten]     distarch: x86_64
+2018-10-11T14:11:14.974-0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2018-10-11T14:11:14.975-0300 I CONTROL  [initandlisten] options: { storage: { dbPath: "D:/Marcelo/WorkSpace/backend/backend/data" } }
+2018-10-11T14:11:14.975-0300 W STORAGE  [initandlisten] Detected unclean shutdown - D:/Marcelo/WorkSpace/backend/backend/data\mongod.lock is not empty.
+2018-10-11T14:11:14.975-0300 I STORAGE  [initandlisten] Detected data files in D:/Marcelo/WorkSpace/backend/backend/data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2018-10-11T14:11:14.976-0300 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2018-10-11T14:11:14.976-0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3582M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),statistics_log=(wait=0),verbose=(recovery_progress),
+2018-10-11T14:11:15.660-0300 I STORAGE  [initandlisten] WiredTiger message [1539277875:660008][7072:140736769047632], txn-recover: Main recovery loop: starting at 4/256
+2018-10-11T14:11:15.698-0300 I STORAGE  [initandlisten] WiredTiger message [1539277875:698007][7072:140736769047632], txn-recover: Recovering log 4 through 5
+2018-10-11T14:11:16.021-0300 I STORAGE  [initandlisten] WiredTiger message [1539277876:21004][7072:140736769047632], file:index-3-6099329348129723453.wt, txn-recover: Recovering log 5 through 5
+2018-10-11T14:11:16.274-0300 I STORAGE  [initandlisten] WiredTiger message [1539277876:274001][7072:140736769047632], file:index-3-6099329348129723453.wt, txn-recover: Set global recovery timestamp: 0
+2018-10-11T14:11:16.650-0300 I RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+2018-10-11T14:11:16.953-0300 I CONTROL  [initandlisten] 
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] 
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2018-10-11T14:11:16.954-0300 I CONTROL  [initandlisten] 
+2018-10-11T14:11:17.685-0300 W FTDC     [initandlisten] Failed to initialize Performance Counters for FTDC: WindowsPdhError: PdhExpandCounterPathW failed with 'O objeto especificado não foi encontrado no computador.' for counter '\Memory\Available Bytes'
+2018-10-11T14:11:17.685-0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory 'D:/Marcelo/WorkSpace/backend/backend/data/diagnostic.data'
+2018-10-11T14:11:17.688-0300 I NETWORK  [initandlisten] waiting for connections on port 27017
+2018-10-11T14:11:18.022-0300 I FTDC     [ftdc] Unclean full-time diagnostic data capture shutdown detected, found interim file, some metrics may have been lost. OK

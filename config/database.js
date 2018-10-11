@@ -17,7 +17,7 @@ function getCustomerByParameter(id, email, name, callback){
             [                 
                 {email:{$eq:email}}, 
                 {_id: ObjectId(id)}, 
-                {nome:regex}
+                {name:regex}
             ] 
         }).toArray(callback);
 }
@@ -30,9 +30,14 @@ function updateCustomer(id, customer, callback){
     global.conn.collection("customers").update({_id: ObjectId(id)}, customer, callback);
 }
 
+function deleteCustomer(id, callback){    
+    global.conn.collection("customers").deleteOne({_id: ObjectId(id)}, callback);
+}
+
 module.exports = { 
     findAllCustomer, 
     getCustomerByParameter, 
     insertCustomer, 
-    updateCustomer
+    updateCustomer,
+    deleteCustomer
 }

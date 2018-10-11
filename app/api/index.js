@@ -1,9 +1,5 @@
 var api = {}
 
-api.getUser = function(req, res) {
-    res.json({"_name":"Marcelo"}); 
-};
-
 api.getAllCustomers = function(req, res) {
     global.db.findAllCustomer((e, docs) => {
         if (e) {return console.log(e);}
@@ -38,11 +34,13 @@ api.updateCustomer = function(req, res){
     });
 }
 
-api.postUser = function(req, res){
-    var usuario = req.body;
-    console.log(usuario._name);
-    res.send('Post realizado com sucesso: '+ usuario._name);
-};
+api.deleteCustomer = function(req, res){
+    var id = req.params.param;
+    global.db.deleteCustomer(id, (e, docs) => {
+        if (e) {return console.log(e);}
+        res.json(docs);
+    });
+}
 /*
 api.adiciona = function(req, res) {
     var foto = req.body;

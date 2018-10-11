@@ -1,8 +1,7 @@
 use backend
 
-{
-	"nome": "Marcelo",
-	"telefone": "11544443333",
-	"email": "marcelo.cesards@gmail.com",
-	"password": "123456"
-}
+db.customers.insert{"nome": "Marcelo", "telefone": "11544443333",	"email": "marcelo.cesards@gmail.com",	"password": "123456"}
+
+db.customers.createIndex( { "email": 1 }, { unique: true } )
+
+db.customers.drop()

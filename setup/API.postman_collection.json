@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "22befc0c-2a3a-4d72-84ef-8c0bcb1e838b",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"item": [
+				{
+					"name": "createCustomer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
+								"exec": [
+									"pm.environment.set(\"server\", \"localhost\");",
+									"pm.environment.set(\"port\", \"3000\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "92793aec-78de-463a-a875-7f2ece191825",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.environment.set(\"idCustomer\", jsonData.ops[0]._id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"usuario\",\n    \"telefone\": \"11544443334\",\n    \"email\": \"user.user@gmail.com\",\n    \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}:{{port}}/v1/customer",
+							"host": [
+								"{{server}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"item": [
+				{
+					"name": "updateCustomer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
+								"exec": [
+									"pm.environment.set(\"server\", \"localhost\");",
+									"pm.environment.set(\"port\", \"3000\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "92793aec-78de-463a-a875-7f2ece191825",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.test(\"environment to be production\", function () { ",
+									"    pm.expect(jsonData.nModified).to.equal(1); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"usuario\",\n    \"telefone\": \"11544443334\",\n    \"email\": \"user.other@gmail.com\",\n    \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}:{{port}}/v1/customer/{{idCustomer}}",
+							"host": [
+								"{{server}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"customer",
+								"{{idCustomer}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Read",
+			"item": [
+				{
+					"name": "allCustomers",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
+								"exec": [
+									"pm.environment.set(\"server\", \"localhost\");",
+									"pm.environment.set(\"port\", \"3000\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1707e0be-697a-4994-8c75-ebefba0db5c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"idCustomer\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}:{{port}}/v1/customer",
+							"host": [
+								"{{server}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customerById",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
+								"exec": [
+									"pm.environment.set(\"server\", \"localhost\");",
+									"pm.environment.set(\"port\", \"3000\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1707e0be-697a-4994-8c75-ebefba0db5c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"idCustomer\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}:{{port}}/v1/customer/param?id={{idCustomer}}",
+							"host": [
+								"{{server}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"customer",
+								"param"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{idCustomer}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customerByEmail",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
+								"exec": [
+									"pm.environment.set(\"server\", \"localhost\");",
+									"pm.environment.set(\"port\", \"3000\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1707e0be-697a-4994-8c75-ebefba0db5c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"idCustomer\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}:{{port}}/v1/customer/param?email=user.other@gmail.com",
+							"host": [
+								"{{server}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"customer",
+								"param"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user.other@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customerByName",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
+								"exec": [
+									"pm.environment.set(\"server\", \"localhost\");",
+									"pm.environment.set(\"port\", \"3000\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1707e0be-697a-4994-8c75-ebefba0db5c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(pm.environment.get(\"idCustomer\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}:{{port}}/v1/customer/param?name=usU",
+							"host": [
+								"{{server}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"customer",
+								"param"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "usU"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "deleteCustomer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
+								"exec": [
+									"pm.environment.set(\"server\", \"localhost\");",
+									"pm.environment.set(\"port\", \"3000\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "92793aec-78de-463a-a875-7f2ece191825",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.test(\"environment to be production\", function () { ",
+									"    pm.expect(jsonData.ok).to.equal(1); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{server}}:{{port}}/v1/customer/{{idCustomer}}",
+							"host": [
+								"{{server}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"customer",
+								"{{idCustomer}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "after - customerById",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
+								"exec": [
+									"pm.environment.set(\"server\", \"localhost\");",
+									"pm.environment.set(\"port\", \"3000\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1707e0be-697a-4994-8c75-ebefba0db5c7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"[]\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}:{{port}}/v1/customer/param?id={{idCustomer}}",
+							"host": [
+								"{{server}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"v1",
+								"customer",
+								"param"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{idCustomer}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
