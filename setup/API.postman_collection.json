@@ -33,7 +33,7 @@
 									"",
 									"var jsonData = JSON.parse(responseBody);",
 									"",
-									"pm.environment.set(\"idCustomer\", jsonData.ops[0]._id);"
+									"pm.environment.set(\"idCustomer\", jsonData._id);"
 								],
 								"type": "text/javascript"
 							}
@@ -97,8 +97,8 @@
 									"",
 									"var jsonData = JSON.parse(responseBody);",
 									"",
-									"pm.test(\"environment to be production\", function () { ",
-									"    pm.expect(jsonData.nModified).to.equal(1); ",
+									"pm.test(\"email has change\", function () { ",
+									"    pm.expect(jsonData.email).to.equal(\"user.other@gmail.com\"); ",
 									"});"
 								],
 								"type": "text/javascript"
@@ -401,7 +401,7 @@
 									"var jsonData = JSON.parse(responseBody);",
 									"",
 									"pm.test(\"environment to be production\", function () { ",
-									"    pm.expect(jsonData.ok).to.equal(1); ",
+									"    pm.expect(jsonData.result.ok).to.equal(1); ",
 									"});"
 								],
 								"type": "text/javascript"
@@ -454,12 +454,14 @@
 							"script": {
 								"id": "1707e0be-697a-4994-8c75-ebefba0db5c7",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 500\", function () {",
+									"    pm.response.to.have.status(500);",
 									"});",
 									"",
-									"pm.test(\"Body is correct\", function () {",
-									"    pm.response.to.have.body(\"[]\");",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"pm.test(\"Customer has been deleted\", function () { ",
+									"    pm.expect(jsonData.error).to.equal(\"None customer found\"); ",
 									"});"
 								],
 								"type": "text/javascript"
