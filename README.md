@@ -3,6 +3,16 @@
 Backend é uma api de backend para um simples cadastro de cliente.
 
   - Oferece métodos CRUD para gerenciamento dos clientes.
+## Por onde Começar
+Você deve utilizar para construção do sistema:
+ - node v8.12.0
+ - npm v6.4.1
+ - mongoDB db version v4.0.3
+ - MongoDB shell version v4.0.3
+ - Postman
+ 
+No arquivo setup/API.postman_collection.json você encontrará todas as requisições para fazer os testes básicos da API.
+
 ## Interfaces
 ### Customer
 Através desta interface, é possível gerenciar os clientes nas coleções do banco de dados.
