@@ -145,6 +145,10 @@ Na raiz do sistema, voce verá o arquivo server.js responsável por iniciar o serv
 
 ### Módulos
 
+A aplicação está dividida em três partes principais:
+    - APP (core): esta é a parte responsável por implementar as rotas que serão expostas pelo servidor e implementar as regras de negócio que definem os comportamentos da aplicação.
+    - INFRA (configuração): Configura o express, o framework de comunicação http e o banco de dados. Também provê os métodos de acesso a dados para a a aplicação.
+
 #### app.api
 Este módulo é responsável por definir os métodos utilizados para invocar as interfaces do banco de dados, gerenciar erros e transformar dados para retornar ao usuário.
 
@@ -171,7 +175,8 @@ Este módulo é responsável por definir as rotas da aplicação que expõe os métodos
 | app.use(function(err, req, res, next) | Esta rota é utilizada como um middleware de tratamento de erros. |
 
 #### infra.database
-Este módulo instancia a base de dados e define os métodos da interface de banco de dados a serem consumidos pelo módulo app.api.
+Este módulo é responsável por configurar e instanciar a base de dados e define os métodos da interface a ser consumida pelo módulo app.api.
+Também é responsável por configurar e instanciar o express, utilizado para instanciar o servidor no arquivo server.js e permitir a construção das rotas no módulo app.routes.
 
 ##### Métodos
 
@@ -184,3 +189,4 @@ Este módulo instancia a base de dados e define os métodos da interface de banco 
 | deleteCustomer | Remove um cliente na base de dados com base no id enviado por parametro. |
 
 #### infra.express
+Módulo responsável por configurar o express. também configura midwares para codificar e decodificar json.
