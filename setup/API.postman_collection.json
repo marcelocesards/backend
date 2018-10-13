@@ -17,7 +17,7 @@
 								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
 								"exec": [
 									"pm.environment.set(\"server\", \"localhost\");",
-									"pm.environment.set(\"port\", \"3000\");"
+									"pm.environment.set(\"port\", \"8080\");"
 								],
 								"type": "text/javascript"
 							}
@@ -51,7 +51,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"usuario\",\n    \"telefone\": \"11544443334\",\n    \"email\": \"user.user@gmail.com\",\n    \"password\": \"123456\"\n}"
+							"raw": "{\n    \"name\": \"usuario\",\n    \"telefone\": \"11544443334\",\n    \"email\": \"user.user1@gmail.com\",\n    \"password\": \"123456\"\n}"
 						},
 						"url": {
 							"raw": "{{server}}:{{port}}/v1/customer",
@@ -80,8 +80,7 @@
 							"script": {
 								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
 								"exec": [
-									"pm.environment.set(\"server\", \"localhost\");",
-									"pm.environment.set(\"port\", \"3000\");"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -147,8 +146,7 @@
 							"script": {
 								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
 								"exec": [
-									"pm.environment.set(\"server\", \"localhost\");",
-									"pm.environment.set(\"port\", \"3000\");"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -199,8 +197,7 @@
 							"script": {
 								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
 								"exec": [
-									"pm.environment.set(\"server\", \"localhost\");",
-									"pm.environment.set(\"port\", \"3000\");"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -258,8 +255,7 @@
 							"script": {
 								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
 								"exec": [
-									"pm.environment.set(\"server\", \"localhost\");",
-									"pm.environment.set(\"port\", \"3000\");"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -317,8 +313,7 @@
 							"script": {
 								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
 								"exec": [
-									"pm.environment.set(\"server\", \"localhost\");",
-									"pm.environment.set(\"port\", \"3000\");"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -382,8 +377,7 @@
 							"script": {
 								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
 								"exec": [
-									"pm.environment.set(\"server\", \"localhost\");",
-									"pm.environment.set(\"port\", \"3000\");"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -442,8 +436,6 @@
 							"script": {
 								"id": "9cee6c5e-39d5-43b9-a139-d0dfd72796da",
 								"exec": [
-									"pm.environment.set(\"server\", \"localhost\");",
-									"pm.environment.set(\"port\", \"3000\");",
 									""
 								],
 								"type": "text/javascript"
