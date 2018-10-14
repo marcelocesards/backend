@@ -34,6 +34,15 @@ Você deve utilizar para construção do sistema:
  
 No arquivo setup/API.postman_collection.json você encontrará todas as requisições para fazer os testes básicos da API.
 
+### Configuração da base de dados
+Antes inciar a execução da aplicação, é necessário criar o arquivo .env na raiz do projeto com as configurações da base de dados. Segue um exemplo:
+
+.env
+DATABASE_SERVICE_NAME=MongoDB
+MONGODB_SERVICE_HOST=localhost
+MONGODB_SERVICE_PORT=27017
+MONGODB_DATABASE=backend
+
 ## Interfaces
 ### Customer
 Através desta interface, é possível gerenciar os clientes nas coleções do banco de dados.
