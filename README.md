@@ -38,10 +38,19 @@ No arquivo setup/API.postman_collection.json você encontrará todas as requisiçõe
 Antes inciar a execução da aplicação, é necessário criar o arquivo .env na raiz do projeto com as configurações da base de dados. Segue um exemplo:
 
 .env
+
 DATABASE_SERVICE_NAME=MongoDB
 MONGODB_SERVICE_HOST=localhost
 MONGODB_SERVICE_PORT=27017
 MONGODB_DATABASE=backend
+
+### Iniciando a aplicação
+- 1: Fazer o clone do repositório
+- 2: Criar o arquivo de configuração ".env" na raiz do projeto que deve apontar para a sua instancia do banco de dados
+- 3: Resolver as dependencias do projeto: 
+    * acessar o diretório raiz do projeto
+    * executar o comando "npm install"
+- 4: Iniciar o projeto: "npm start"
 
 ## Interfaces
 ### Customer
