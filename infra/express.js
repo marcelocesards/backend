@@ -1,9 +1,9 @@
+require('dotenv').config();
+
 var express = require('express')
     ,app = express()
     ,bodyParser = require('body-parser')
     ,routes = require('../app/routes');
-  
-require('dotenv').config();
 
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
