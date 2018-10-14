@@ -23,9 +23,12 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 		mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
     }
 }
-
+console.log("url:" + mongoURL);
 mongoClient.connect(mongoURL, { useNewUrlParser: true })
-                        .then(conn => global.conn = conn.db("backend"))
+                        .then(conn => {
+                            global.conn = conn.db("backend");
+                            console.log('Connected to MongoDB at: %s', mongoURL);
+                        })
                         .catch(err => console.log(err));
 
 function findAllCustomer(callback){  
