@@ -4,7 +4,7 @@ var mongoClient = require("mongodb").MongoClient,
 
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
 	mongoURLLabel = "";
-console.log(" process.env:"+ process.env);
+console.log(" process.env:"+JSON.stringify(process.env));
 console.log('process.env.DATABASE_SERVICE_NAME:'+process.env.DATABASE_SERVICE_NAME);
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 	var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
