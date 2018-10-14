@@ -1,5 +1,5 @@
-global.db = require('./infra/database');
 var app = require('./infra/express');
+global.db = require('./infra/database');
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';

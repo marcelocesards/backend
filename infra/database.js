@@ -1,9 +1,12 @@
 var mongoClient = require("mongodb").MongoClient,
     ObjectId = require("mongodb").ObjectId;
 
-mongoClient.connect("mongodb://localhost:27017/backend", { useNewUrlParser: true })
-            .then(conn => global.conn = conn.db("backend"))
-            .catch(err => console.log(err))
+
+var url = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
+
+mongoClient.connect(url, { useNewUrlParser: true })
+                        .then(conn => global.conn = conn.db("backend"))
+                        .catch(err => console.log(err));
 
 function findAllCustomer(callback){  
     global.conn.collection("customers").find({}).toArray(callback);
